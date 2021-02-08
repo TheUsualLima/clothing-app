@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ClothingDisplay</string>
+    <string name="welcome">Welcome</string>
+    <string name="view_products">View Products</string>
 </resources>
