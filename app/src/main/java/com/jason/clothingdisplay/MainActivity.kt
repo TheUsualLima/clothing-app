@@ -1,22 +1,20 @@
 package com.jason.clothingdisplay
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
-import com.jason.clothingdisplay.R
-import com.jason.clothingdisplay.ui.mainmenu.MainMenuFragment
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.jason.clothingdisplay.ui.productslist.ProductsListActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if(savedInstanceState == null) {
-            supportFragmentManager.commit {
-                setReorderingAllowed(true)
-                add<MainMenuFragment>(R.id.fragment_container_view)
-            }
+        val viewProductsButton = findViewById<Button>(R.id.view_products_button)
+        viewProductsButton.setOnClickListener{
+            val viewProductsIntent = Intent(this, ProductsListActivity::class.java)
+            startActivity(viewProductsIntent)
         }
     }
 }
