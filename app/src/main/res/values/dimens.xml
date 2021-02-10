@@ -12,6 +12,6 @@
     <dimen name="margin_vertical_product_image">8dp</dimen>
     <dimen name="margin_horizontal_product_image">16dp</dimen>
 
-    <dimen name="image_size_small">120dp</dimen>
+    <dimen name="image_size_small">140dp</dimen>
 
 </resources>
