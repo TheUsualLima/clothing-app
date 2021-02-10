@@ -2,29 +2,21 @@ package com.jason.clothingdisplay.ui.productslist
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.jason.clothingdisplay.R
 import com.jason.clothingdisplay.databinding.ActivityProductsListBinding
-import com.jason.clothingdisplay.presentation.productslist.ProductsListViewModel
 
 class ProductsListActivity : AppCompatActivity() {
-    private lateinit var vBinding: ActivityProductsListBinding
-    private lateinit var viewModel: ProductsListViewModel
+    private lateinit var binding: ActivityProductsListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        vBinding = ActivityProductsListBinding.inflate(layoutInflater)
-        setContentView(vBinding.root)
+        binding = ActivityProductsListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this).get(ProductsListViewModel::class.java)
-        setupRecycler()
+        val listFragment = ProductsListFragment.newInstance()
+        val transaction = supportFragmentManager.beginTransaction()
+
+        
     }
 
-    private fun setupRecycler() {
-        vBinding.productListRecyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = ProductsAdapter()
-        vBinding.productListRecyclerView.adapter = adapter
-        vBinding.productListRecyclerView.setHasFixedSize(true)
-        viewModel.productsList.observe(this, { adapter.submitList(it) })
-    }
 }

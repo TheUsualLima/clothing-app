@@ -8,36 +8,46 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
+import com.bumptech.glide.load.DecodeFormat
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
 import com.jason.clothingdisplay.R
-import com.jason.clothingdisplay.presentation.productdetails.ProductDetailsViewModel
+import com.jason.clothingdisplay.databinding.ProductDetailsFragmentBinding
 
-class ProductDetailsFragment : DialogFragment() {
+class ProductDetailsFragment(private val prodID: String) : Fragment() {
+
+    private var _binding: ProductDetailsFragmentBinding? = null
+    private val binding: ProductDetailsFragmentBinding
+        get() = requireNotNull(_binding)
 
     companion object {
-        fun newInstance() = ProductDetailsFragment()
+        fun newInstance(prodID: String) = ProductDetailsFragment(prodID)
     }
-
-    private lateinit var viewModel: ProductDetailsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.product_details_fragment, container, false)
+        _binding = ProductDetailsFragmentBinding.inflate(layoutInflater, container, false)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ProductDetailsViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onStart() {
-        super.onStart()
-        dialog?.window?.setLayout(
-            WindowManager.LayoutParams.MATCH_PARENT,
-            WindowManager.LayoutParams.WRAP_CONTENT
-        )
+        val url = "https://riverisland.scene7.com/is/image/RiverIsland/${prodID}_main"
+        Glide.with(requireContext())
+            .load(url)
+            .override(SIZE_ORIGINAL)
+            .apply(
+                RequestOptions()
+                    .format(DecodeFormat.PREFER_ARGB_8888)
+            )
+            .placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.ic_launcher_foreground)
+            .into(binding.productDetailsImage)
     }
-
 }
