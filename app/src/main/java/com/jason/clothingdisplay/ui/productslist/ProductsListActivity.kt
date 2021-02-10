@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jason.clothingdisplay.databinding.ActivityProductsListBinding
 import com.jason.clothingdisplay.presentation.productslist.ProductsListViewModel
-import com.jason.clothingdisplay.presentation.productslist.ProductsListViewModelFactory
 
 class ProductsListActivity : AppCompatActivity() {
     private lateinit var vBinding: ActivityProductsListBinding
@@ -17,7 +16,7 @@ class ProductsListActivity : AppCompatActivity() {
         vBinding = ActivityProductsListBinding.inflate(layoutInflater)
         setContentView(vBinding.root)
 
-        viewModel = ViewModelProvider(this, ProductsListViewModelFactory()).get(ProductsListViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(ProductsListViewModel::class.java)
         setupRecycler()
     }
 

@@ -10,7 +10,7 @@
     android:background="@drawable/recycler_shimmer_background">
 
     <ImageView
-        android:id="@+id/product_image"
+        android:id="@+id/product_list_image"
         android:layout_width="@dimen/image_size_small"
         android:layout_height="@dimen/image_size_small"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,26 +20,26 @@
         android:src="@drawable/ic_launcher_background"/>
 
     <TextView
-        android:id="@+id/product_name"
+        android:id="@+id/product_list_name"
         android:text="Red Bomber Jacket LIMITED EDITION 2021 version"
         android:layout_width="wrap_content"
         app:layout_constrainedWidth="true"
         android:layout_height="wrap_content"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/product_image"
+        app:layout_constraintStart_toEndOf="@+id/product_list_image"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="@dimen/margin_horizontal_product_image"
-        app:layout_constraintTop_toTopOf="@id/product_image"
-        app:layout_constraintBottom_toTopOf="@id/product_price"/>
+        app:layout_constraintTop_toTopOf="@id/product_list_image"
+        app:layout_constraintBottom_toTopOf="@id/product_list_price"/>
 
     <TextView
-        android:id="@+id/product_price"
+        android:id="@+id/product_list_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/product_name"
+        app:layout_constraintStart_toStartOf="@+id/product_list_name"
         android:text="£99.99" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

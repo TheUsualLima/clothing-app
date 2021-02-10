@@ -25,8 +25,8 @@ class ProductsAdapter() : ListAdapter<Product, ProductsAdapter.ProductsViewHolde
     class ProductsViewHolder(private val itemBinding: ProductsListItemBinding, private val context: Context) : RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(currentItem: Product) {
             itemBinding.apply {
-                productName.text = currentItem.name
-                productPrice.text = context.resources.getString(R.string.price, String.format("%.2f", currentItem.price))
+                productListName.text = currentItem.name
+                productListPrice.text = context.resources.getString(R.string.price, String.format("%.2f", currentItem.price))
                 val url = "https://riverisland.scene7.com/is/image/RiverIsland/${currentItem.id}_main"
                 Glide.with(context)
                     .load(url)
@@ -34,7 +34,7 @@ class ProductsAdapter() : ListAdapter<Product, ProductsAdapter.ProductsViewHolde
                     .centerCrop()
                     .placeholder(null)
                     .error(R.drawable.ic_launcher_background)
-                    .into(productImage)
+                    .into(productListImage)
 
                 productItemContainer.setOnClickListener {
                     Toast.makeText(context, "${currentItem.name} clicked", Toast.LENGTH_SHORT).show()
