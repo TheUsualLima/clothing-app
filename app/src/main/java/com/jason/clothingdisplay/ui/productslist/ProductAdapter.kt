@@ -30,8 +30,8 @@ class ProductsAdapter() : ListAdapter<Product, ProductsAdapter.ProductsViewHolde
                 Glide.with(context)
                     .load(url)
                     .centerCrop()
-                    .placeholder(R.drawable.ic_launcher_background)
-                    .error(R.drawable.ic_launcher_foreground)
+                    .placeholder(null)
+                    .error(R.drawable.ic_launcher_background)
                     .into(productImage)
                 productItemContainer.setOnClickListener {
                     Toast.makeText(context, "${currentItem.name} clicked", Toast.LENGTH_SHORT).show()
