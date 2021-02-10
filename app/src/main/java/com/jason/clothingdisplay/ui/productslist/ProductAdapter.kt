@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.jason.clothingdisplay.R
 import com.jason.clothingdisplay.databinding.ProductsListItemBinding
 import com.jason.clothingdisplay.domain.network.Product
@@ -29,10 +30,12 @@ class ProductsAdapter() : ListAdapter<Product, ProductsAdapter.ProductsViewHolde
                 val url = "https://riverisland.scene7.com/is/image/RiverIsland/${currentItem.id}_main"
                 Glide.with(context)
                     .load(url)
+                    .transition(DrawableTransitionOptions.withCrossFade(750))
                     .centerCrop()
                     .placeholder(null)
                     .error(R.drawable.ic_launcher_background)
                     .into(productImage)
+
                 productItemContainer.setOnClickListener {
                     Toast.makeText(context, "${currentItem.name} clicked", Toast.LENGTH_SHORT).show()
                 }
