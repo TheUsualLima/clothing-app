@@ -1,23 +1,23 @@
 package com.jason.clothingdisplay.ui.productslist
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.jason.clothingdisplay.R
 import com.jason.clothingdisplay.databinding.ActivityProductsListBinding
-import com.jason.clothingdisplay.databinding.ProductsListItemBinding
-import com.jason.clothingdisplay.domain.Product
-import java.text.DecimalFormat
+import com.jason.clothingdisplay.presentation.productslist.ProductsListViewModel
+import com.jason.clothingdisplay.presentation.productslist.ProductsListViewModelFactory
 
 class ProductsListActivity : AppCompatActivity() {
     private lateinit var vBinding: ActivityProductsListBinding
+    private lateinit var viewModel: ProductsListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         vBinding = ActivityProductsListBinding.inflate(layoutInflater)
         setContentView(vBinding.root)
 
+        viewModel = ViewModelProvider(this, ProductsListViewModelFactory()).get(ProductsListViewModel::class.java)
         setupRecycler()
     }
 
@@ -26,82 +26,6 @@ class ProductsListActivity : AppCompatActivity() {
         val adapter = ProductsAdapter()
         vBinding.productListRecyclerView.adapter = adapter
         vBinding.productListRecyclerView.setHasFixedSize(true)
-
-        adapter.submitList(
-            listOf(
-                Product(
-                    1,
-                    "Chinos",
-                    67.toBigDecimal(),
-                    "chino-image"
-                ),
-                Product(
-                    2,
-                    "Fancy Shoes",
-                    45.toBigDecimal(),
-                    "fancy-shoes-image"
-                ),
-                Product(
-                    3,
-                    "Fluffy Jacket",
-                    123.99.toBigDecimal(),
-                    "fluffy-jacket-image"
-                ),
-                Product(
-                    4,
-                    "Red Shirt",
-                    17.46.toBigDecimal(),
-                    "red-shirt-image"
-                ),
-                Product(
-                    5,
-                    "Sandals",
-                    99999.99999.toBigDecimal(),
-                    "sandals-image"
-                ),
-                Product(
-                    6,
-                    "Dinosaur Costume",
-                    3.50.toBigDecimal(),
-                    "dinosaur-costume-image"
-                ),
-                Product(
-                    1,
-                    "Chinos",
-                    67.toBigDecimal(),
-                    "chino-image"
-                ),
-                Product(
-                    2,
-                    "Fancy Shoes",
-                    45.toBigDecimal(),
-                    "fancy-shoes-image"
-                ),
-                Product(
-                    3,
-                    "Fluffy Jacket",
-                    123.99.toBigDecimal(),
-                    "fluffy-jacket-image"
-                ),
-                Product(
-                    4,
-                    "Red Shirt",
-                    17.46.toBigDecimal(),
-                    "red-shirt-image"
-                ),
-                Product(
-                    5,
-                    "Sandals",
-                    99999.99999.toBigDecimal(),
-                    "sandals-image"
-                ),
-                Product(
-                    6,
-                    "Dinosaur Costume",
-                    3.50.toBigDecimal(),
-                    "dinosaur-costume-image"
-                )
-            )
-        )
+        viewModel.productsList.observe(this, { adapter.submitList(it) })
     }
 }

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jason.clothingdisplay.R
 import com.jason.clothingdisplay.databinding.ProductsListItemBinding
-import com.jason.clothingdisplay.domain.Product
+import com.jason.clothingdisplay.domain.network.Product
 
 class ProductsAdapter() : ListAdapter<Product, ProductsAdapter.ProductsViewHolder>(ProductDiffUtilItemCallback) {
     override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
