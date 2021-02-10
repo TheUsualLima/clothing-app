@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.jason.clothingdisplay.databinding.ProductsListFragmentBinding
+import com.jason.clothingdisplay.databinding.FragmentProductsListBinding
 import com.jason.clothingdisplay.presentation.productslist.ProductsListViewModel
 
 class ProductsListFragment() : Fragment(), com.jason.clothingdisplay.ui.productslist.View {
 
-    private var _binding: ProductsListFragmentBinding? = null
-    private val binding: ProductsListFragmentBinding
+    private var _binding: FragmentProductsListBinding? = null
+    private val binding: FragmentProductsListBinding
         get() = requireNotNull(_binding)
 
     private lateinit var viewModel: ProductsListViewModel
@@ -23,10 +23,11 @@ class ProductsListFragment() : Fragment(), com.jason.clothingdisplay.ui.products
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = ProductsListFragmentBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentProductsListBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 

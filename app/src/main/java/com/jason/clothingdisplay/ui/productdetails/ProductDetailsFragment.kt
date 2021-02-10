@@ -1,26 +1,21 @@
 package com.jason.clothingdisplay.ui.productdetails
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.DecodeFormat
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
 import com.jason.clothingdisplay.R
-import com.jason.clothingdisplay.databinding.ProductDetailsFragmentBinding
+import com.jason.clothingdisplay.databinding.FragmentProductDetailsBinding
 
 class ProductDetailsFragment(private val prodID: String) : Fragment() {
 
-    private var _binding: ProductDetailsFragmentBinding? = null
-    private val binding: ProductDetailsFragmentBinding
+    private var _binding: FragmentProductDetailsBinding? = null
+    private val binding: FragmentProductDetailsBinding
         get() = requireNotNull(_binding)
 
     companion object {
@@ -31,7 +26,7 @@ class ProductDetailsFragment(private val prodID: String) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = ProductDetailsFragmentBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentProductDetailsBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 

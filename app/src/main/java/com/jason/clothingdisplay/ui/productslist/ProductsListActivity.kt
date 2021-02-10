@@ -12,11 +12,5 @@ class ProductsListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProductsListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val listFragment = ProductsListFragment.newInstance()
-        val transaction = supportFragmentManager.beginTransaction()
-
-        
     }
-
 }
