@@ -3,4 +3,5 @@
     <string name="welcome">Welcome</string>
     <string name="view_products">View Products</string>
     <string name="product_list_title">Product List</string>
+    <string name="price">£%1$s</string>
 </resources>
