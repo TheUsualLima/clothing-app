@@ -5,21 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
 import com.jason.clothingdisplay.R
 import com.jason.clothingdisplay.databinding.FragmentProductDetailsBinding
 
-class ProductDetailsFragment(private val prodID: String) : Fragment() {
+class ProductDetailsFragment() : Fragment() {
 
     private var _binding: FragmentProductDetailsBinding? = null
     private val binding: FragmentProductDetailsBinding
         get() = requireNotNull(_binding)
+    val args: ProductDetailsFragmentArgs by navArgs()
 
     companion object {
-        fun newInstance(prodID: String) = ProductDetailsFragment(prodID)
+        fun newInstance() = ProductDetailsFragment()
     }
 
     override fun onCreateView(
@@ -33,15 +37,21 @@ class ProductDetailsFragment(private val prodID: String) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val prodID = args.productId
+
         val url = "https://riverisland.scene7.com/is/image/RiverIsland/${prodID}_main"
+        val progressSpinner = CircularProgressDrawable(requireContext())
+        progressSpinner.strokeWidth = 15f
+        progressSpinner.centerRadius = 100f
+        progressSpinner.start()
+
         Glide.with(requireContext())
             .load(url)
-            .override(SIZE_ORIGINAL)
             .apply(
                 RequestOptions()
                     .format(DecodeFormat.PREFER_ARGB_8888)
             )
-            .placeholder(R.drawable.ic_launcher_background)
+            .placeholder(progressSpinner)
             .error(R.drawable.ic_launcher_foreground)
             .into(binding.productDetailsImage)
     }

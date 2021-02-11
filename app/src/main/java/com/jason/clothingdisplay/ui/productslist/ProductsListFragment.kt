@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jason.clothingdisplay.databinding.FragmentProductsListBinding
+import com.jason.clothingdisplay.domain.network.Product
 import com.jason.clothingdisplay.presentation.productslist.ProductsListViewModel
 
 class ProductsListFragment() : Fragment(), com.jason.clothingdisplay.ui.productslist.View {
@@ -45,7 +47,8 @@ class ProductsListFragment() : Fragment(), com.jason.clothingdisplay.ui.products
         viewModel.productsList.observe(viewLifecycleOwner, { adapter.submitList(it) })
     }
 
-    override fun onItemClick(prodID: String) {
-        TODO("Not yet implemented")
+    override fun onItemClick(product: Product) {
+        val action = ProductsListFragmentDirections.actionProductsListFragmentToProductDetailsFragment(product.id.toString())
+        this.findNavController().navigate(action)
     }
 }

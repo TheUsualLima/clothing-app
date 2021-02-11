@@ -31,8 +31,6 @@ class ProductsAdapter(private val view: View) : ListAdapter<Product, ProductsAda
                 val url = "https://riverisland.scene7.com/is/image/RiverIsland/${currentItem.id}_main"
                 Glide.with(context)
                     .load(url)
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .skipMemoryCache(true)
                     .transition(DrawableTransitionOptions.withCrossFade(750))
                     .centerCrop()
                     .placeholder(null)
@@ -40,7 +38,7 @@ class ProductsAdapter(private val view: View) : ListAdapter<Product, ProductsAda
                     .into(productListImage)
 
                 productItemContainer.setOnClickListener {
-                    view.onItemClick(currentItem.id.toString())
+                    view.onItemClick(currentItem)
                 }
             }
         }

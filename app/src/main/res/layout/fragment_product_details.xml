@@ -8,9 +8,6 @@
     <ImageView
         android:id="@+id/product_details_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:minWidth="300dp"
-        android:minHeight="300dp"
-        android:background="@color/grey"/>
+        android:layout_height="match_parent"/>
 
 </FrameLayout>
