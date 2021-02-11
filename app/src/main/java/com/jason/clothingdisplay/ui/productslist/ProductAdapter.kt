@@ -12,6 +12,9 @@ import com.bumptech.glide.request.target.Target
 import com.jason.clothingdisplay.R
 import com.jason.clothingdisplay.databinding.ProductsListItemBinding
 import com.jason.clothingdisplay.domain.network.Product
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class ProductsAdapter(private val view: View) : ListAdapter<Product, ProductsAdapter.ProductsViewHolder>(ProductDiffUtilItemCallback) {
     override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
