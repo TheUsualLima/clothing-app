@@ -37,6 +37,10 @@ class ProductDetailsFragment() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.productDetailsBackButton.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
         val prodID = args.productId
 
         val url = "https://riverisland.scene7.com/is/image/RiverIsland/${prodID}_main"
